@@ -28,7 +28,7 @@ zinit light Aloxaf/fzf-tab
 zinit snippet OMZP::git
 
 # Load completions
-autoload -U compinit && cominit
+autoload -U compinit && compinit
 
 zinit cdreplay -q
 
@@ -54,9 +54,9 @@ setopt hist_ignore_dups
 setopt hist_find_no_dups
 
 # Completion styling
-zstyle: ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-zstyle: ':completion:*' menu no
-zstyle: ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 
 # Aliases
 alias ls='ls --color -lah'
