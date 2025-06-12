@@ -5,7 +5,7 @@
     "modules-right": ["tray", "temperature", "cpu", "memory", "clock", "wireplumber"],
 
     "clock": {
-        "format": "{:%d-%m-%Y | %I:%M}",
+        "format": "{:%m-%d-%Y | %I:%M}",
         "tooltip-format": "<tt><small>{calendar}</small></tt>",
         "calendar": {
             "mode"          : "year",
