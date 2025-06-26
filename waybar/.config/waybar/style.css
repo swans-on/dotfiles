@@ -66,7 +66,7 @@ tooltip label {
     color: #ebdbb2;
 }
 
-#clock {
+#clock, #custom-weather {
     border-top: 3px solid #34A853;
     color: #ebdbb2;
 }

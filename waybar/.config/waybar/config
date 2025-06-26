@@ -2,7 +2,14 @@
     "layer": "top",
     "position": "bottom",
     "modules-left": ["sway/workspaces", "sway/mode"],
-    "modules-right": ["tray", "temperature", "cpu", "memory", "clock", "wireplumber"],
+    "modules-center": ["custom/arch"],
+    "modules-right": ["tray", "custom/weather", "temperature", "cpu", "memory", "clock", "wireplumber"],
+
+    "custom/arch": {
+        "format": "👽",
+        "tooltip": true,
+        "exec": "neofetch"
+    },
 
     "clock": {
         "format": "{:%m-%d-%Y | %I:%M}",
@@ -54,6 +61,27 @@
         "format-muted": "",
         "on-click": "helvum",
         "format-icons": ["", "", ""]
-    }
+    },
 
+    "custom/weather": {
+        "format": "{}°",
+        "tooltip": true,
+        "interval": 3600,
+        "exec": "/home/warlboro/.scripts/waybar/wttrbar/wttrbar --ampm --fahrenheit --mph",
+        "return-type": "json"
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

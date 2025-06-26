@@ -1,0 +1,7 @@
+[general]
+import = [
+    "~/.config/alacritty/themes/vesper.toml"
+]
+
+[window]
+opacity = 0.9
