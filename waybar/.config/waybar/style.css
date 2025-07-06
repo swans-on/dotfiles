@@ -1,25 +1,47 @@
-/* https://git.sr.ht/~mrh/dotfiles/tree/trunk/item/dot-config/waybar/style.css */
+/* Swanson's Waybar Styling for Sway */
+
+/* Color Definitions */
+
+/* Base background color */
+@define-color bg_main black;
+@define-color bg_main_tooltip rgba(0, 0, 0, 0.7);
+
+/* Base border color */
+@define-color border_main green;
+
+/* Background color for hover selections */
+@define-color bg_hover rgba(200, 200, 200, 0.3);
+
+/* Text color for content */
+@define-color content_main white;
+@define-color tooltip_main orange;
 
 * {
     border: none;
     border-radius: 0;
     font-family: Terminus, FontAwesome, sans-serif;
-    font-size: 16px;
+    font-size: 13px;
 }
+
+/* Main waybay window */
 
 window#waybar {
-    background: rgba(28, 28, 28, 1.0);
-    color: #ebdbb2;
+    background: @bg_main;
+    color: @content_main;
 }
 
+/* Tooltips */
+
 tooltip {
-    background: rgba(43, 48, 59, 0.8);
-    border: 1px solid rgba(100, 114, 125, 0.8);
+    background: @bg_main_tooltip;
+    border: 1px solid @border_main;
 }
 
 tooltip label {
-    color: white;
+    color: @tooltip_main;
 }
+
+/* Workspaces */
 
 #workspaces button {
     color: #dfd2c4;
@@ -40,43 +62,58 @@ tooltip label {
 	color: #282828;
 }
 
-#window {
-    margin-left: 0px;
-    margin-right: 0px;
-}
+/* Modules */
 
-#tray, #temperature, #cpu, #memory, #clock, #wireplumber {
-    margin-left: 3px;
-    margin-right: 3px;
-    padding: 0 3px;
-}
-
-#wireplumber {
-    border-top: 3px solid #4285F4;
-    color: #ebdbb2;
-}
-
-#cpu {
-    border-top: 3px solid #EA4335;
-    color: #ebdbb2;
-}
-
-#memory {
-    border-top: 3px solid #FBBC04;
-    color: #ebdbb2;
-}
-
-#clock, #custom-weather {
-    border-top: 3px solid #34A853;
-    color: #ebdbb2;
-}
-
-#temperature {
-    border-top: 3px solid #4285F4;
-    color: #ebdbb2;
+#custom-os_button {
+    font-size: 24px;
+    padding-left: 12px;
+    padding-right: 12px;
+    transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 #tray {
-    border-top: 3px solid #EA4335;
-    color: #ebdbb2;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#tray > widget {
+	transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+#tray > widget:hover {
+	background: @bg_hover;
+}
+
+#temperature, #cpu, #memory {
+    padding: 3px;
+}
+
+#temperature {
+    margin-left: 20px;
+}
+
+#memory {
+    margin-right: 20px;
+}
+
+#clock, #custom-weather, #wireplumber {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+/* Hover styling per modules */
+#custom-os_button:hover {
+    background: @bg_hover;
+    color: @content_main;
+}
+
+#clock:hover {
+    background: @bg_hover;
+}
+
+#custom-weather:hover {
+    background: @bg_hover;
+}
+
+#wireplumber:hover {
+    background: @bg_hover;
 }

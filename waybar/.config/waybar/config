@@ -1,18 +1,29 @@
 {
-    "layer": "top",
+    "layer": "bottom",
     "position": "bottom",
-    "modules-left": ["sway/workspaces", "sway/mode"],
-    "modules-center": ["custom/arch"],
-    "modules-right": ["tray", "custom/weather", "temperature", "cpu", "memory", "clock", "wireplumber"],
-
-    "custom/arch": {
-        "format": "👽",
+    "height": 41,
+    "margin-bottom": 1,
+    "modules-left": ["custom/os_button", "sway/workspaces", "sway/mode"],
+    "modules-center":[],
+    "modules-right": [
+        "tray",
+        "temperature", 
+        "cpu",
+        "memory",
+        "wireplumber",
+        "custom/weather",
+        "clock"
+    ],
+    "custom/os_button": {
+        "exec": "~/.config/waybar/scripts/wayfetch.sh",
+        "return-type": "json",
+        "interval": 3600,
+        "format": "󰣇",
         "tooltip": true,
-        "exec": "neofetch"
+        "tooltip-format": "<tt><small>{}</small></tt>"
     },
-
     "clock": {
-        "format": "{:%m-%d-%Y | %I:%M}",
+        "format": "   {:%I:%M\n %m-%d-%Y}",
         "tooltip-format": "<tt><small>{calendar}</small></tt>",
         "calendar": {
             "mode"          : "year",
