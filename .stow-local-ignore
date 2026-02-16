@@ -1,0 +1,4 @@
+# Ignore the ignore file itself
+\.stow-local-ignore
+# Ignore markdown documentation
+.*\.md

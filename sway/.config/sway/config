@@ -225,6 +225,26 @@ bindsym $mod+r mode "resize"
     # Special keys to adjust brightness via brightnessctl
     bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+    
+    # playerctl MPRIS controls
+    bindsym --locked XF86AudioPlay exec playerctl play-pause
+    bindsym --locked XF86AudioPrev exec playerctl previous
+    bindsym --locked XF86AudioNext exec playerctl next
+  
+
+#
+# Clipboard management
+# Requires cliphist
+# Currently running cliphist/wl-paste as a systemd user service.
+#bindsym $mod+Shift+v exec cliphist list | rofi -dmenu -p "Clipboard" | cliphist decode | wl-copy
+bindsym $mod+Shift+v exec ~/.local/bin/clipmenu
+
+#
+# Power management
+# Requires my fork of rofi-power-menu for sway
+#
+bindsym Control+Alt+Delete exec rofi -show power-menu -modi power-menu:rofi-power-menu
+bindsym Control+Alt+l exec swaylock 
 
 #
 # Screenshots

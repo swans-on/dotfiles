@@ -1,0 +1,14 @@
+[Unit]
+Description=Clipboard history service
+After=sway-session.target
+PartOf=graphical-session.target
+
+[Service]
+Type=simple
+# We combine text and image watching into one shell command for simplicity
+ExecStart=/bin/sh -c 'wl-paste --type text --watch cliphist store & wl-paste --type image --watch cliphist store'
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=sway-session.target

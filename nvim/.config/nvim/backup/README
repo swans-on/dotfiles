@@ -1,0 +1,7 @@
+~/.config/nvim/
+├── init.lua          <-- The main entry point that checks the mode.
+├── lua/
+│   ├── config/
+│   │   ├── ide.lua   <-- IDE-specific setup (LSP, Treesitter, etc.)
+│   │   └── scratch.lua <-- Scratch pad setup (minimal keymaps).
+│   └── plugins.lua   <-- Defines all plugins (both modes).

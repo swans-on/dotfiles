@@ -1,29 +1,21 @@
 /* Swanson's Waybar Styling for Sway */
 
 /* Color Definitions */
-
-/* Base background color */
-@define-color bg_main black;
-@define-color bg_main_tooltip rgba(0, 0, 0, 0.7);
-
-/* Base border color */
-@define-color border_main green;
-
-/* Background color for hover selections */
-@define-color bg_hover rgba(200, 200, 200, 0.3);
-
-/* Text color for content */
-@define-color content_main white;
-@define-color tooltip_main orange;
+@define-color bg_main           #000000;
+@define-color bg_main_tooltip   rgba(0, 0, 0, 0.7);
+@define-color border_main       #00ff00;
+@define-color bg_hover          rgba(200, 200, 200, 0.3);
+@define-color content_main      #ffffff;
+@define-color tooltip_main      #ffa500;
+@define-color status_warn       #fabd2f;
+@define-color status_crit       #fb4934;
 
 * {
     border: none;
     border-radius: 0;
-    font-family: Terminus, FontAwesome, sans-serif;
+    font-family: "Terminus", "FontAwesome", sans-serif;
     font-size: 13px;
 }
-
-/* Main waybay window */
 
 window#waybar {
     background: @bg_main;
@@ -31,7 +23,6 @@ window#waybar {
 }
 
 /* Tooltips */
-
 tooltip {
     background: @bg_main_tooltip;
     border: 1px solid @border_main;
@@ -42,78 +33,84 @@ tooltip label {
 }
 
 /* Workspaces */
-
 #workspaces button {
     color: #dfd2c4;
-}
-
-#workspaces button.persistent {
-    color: #dfd2c4;
+    padding: 0 5px;
 }
 
 #workspaces button.focused {
-	border-top: 3px solid #fabd2f;
+    border-top: 3px solid @status_warn;
+    background: @bg_hover;
 }
 
 #workspaces button:hover {
-	box-shadow: inherit;
-	text-shadow: inherit;
-	background: #928374;
-	color: #282828;
+    box-shadow: inherit;
+    text-shadow: inherit;
+    background: #928374;
+    color: #282828;
 }
 
-/* Modules */
-
-#custom-os_button {
-    font-size: 24px;
-    padding-left: 12px;
-    padding-right: 12px;
+/* Base Module Styling */
+#custom-os_button,
+#tray,
+#temperature,
+#cpu,
+#memory,
+#disk,
+#pulseaudio,
+#custom-weather,
+#custom-clipboard,
+#clock,
+#mpris {
+    padding: 0 10px;
     transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-#tray {
-    padding-left: 20px;
-    padding-right: 20px;
+#custom-os_button {
+    font-size: 24px;
+    padding: 0 15px;
 }
 
+/* Grouped Hover Effects */
+#custom-os_button:hover,
+#tray > widget:hover,
+#clock:hover,
+#custom-weather:hover,
+#pulseaudio:hover,
+#disk:hover,
+#cpu:hover,
+#memory:hover,
+#mpris:hover,
+#custom-clipboard:hover {
+    background: @bg_hover;
+}
+
+/* Resource Usage States */
+#cpu.warning, 
+#memory.warning, 
+#disk.warning {
+    color: @status_warn;
+}
+
+#cpu.critical, 
+#memory.critical, 
+#disk.critical {
+    color: @status_crit;
+    font-weight: bold;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes blink {
+    to {
+        background-color: rgba(251, 73, 52, 0.4);
+    }
+}
+
+/* Tray spacing */
 #tray > widget {
-	transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-#tray > widget:hover {
-	background: @bg_hover;
-}
-
-#temperature, #cpu, #memory {
-    padding: 3px;
-}
-
-#temperature {
-    margin-left: 20px;
-}
-
-#memory {
-    margin-right: 20px;
-}
-
-#clock, #custom-weather, #wireplumber {
-    padding-right: 10px;
-    padding-left: 10px;
-}
-
-/* Hover styling per modules */
-#custom-os_button:hover {
-    background: @bg_hover;
-    color: @content_main;
-}
-
-#clock:hover {
-    background: @bg_hover;
-}
-
-#custom-weather:hover {
-    background: @bg_hover;
-}
-
-#wireplumber:hover {
-    background: @bg_hover;
+    margin: 0 5px;
 }

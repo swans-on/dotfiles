@@ -4,16 +4,28 @@
     "height": 41,
     "margin-bottom": 1,
     "modules-left": ["custom/os_button", "sway/workspaces", "sway/mode"],
-    "modules-center":[],
+    "modules-center":["mpris"],
     "modules-right": [
         "tray",
-        "temperature", 
+        "temperature",
         "cpu",
         "memory",
-        "wireplumber",
+        "disk",
+        "pulseaudio",
         "custom/weather",
+        "custom/clipboard",
         "clock"
     ],
+    "mpris": {
+        "format": "{player_icon} {artist} - {title}",
+        "format-paused": "{status_icon} <i>{artist} - {title}</i>",
+        "player-icons": {
+            "default": "▶"
+        },
+        "status-icons": {
+            "paused": "⏸"
+        }
+    },
     "custom/os_button": {
         "exec": "~/.config/waybar/scripts/wayfetch.sh",
         "return-type": "json",
@@ -37,62 +49,76 @@
                 "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
                 "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
             }
-                    },
+        },
         "actions":  {
             "on-click-right": "mode",
-            "on-scroll-up": "tz_up",
-            "on-scroll-down": "tz_down",
             "on-scroll-up": "shift_up",
             "on-scroll-down": "shift_down"
         }
     },
-    
-    "tray" :{
+    "tray": {
         "spacing": 10
     },
-
-    "temperature" :{
+    "temperature": {
         "format": "{temperatureF}°F "
     },
-
     "cpu": {
         "interval": 10,
         "format": "{}% ",
-        "max-length": 10
+        "max-length": 10,
+        "states": {
+            "warning": 70,
+            "critical": 90
+        }
     },
-    
     "memory": {
         "interval": 30,
         "format": "{}% ",
-        "max-length": 10
+        "max-length": 10,
+        "states": {
+            "warning": 70,
+            "critical": 90
+        }
     },
-
-    "wireplumber": {
+    "disk": {
+        "interval": 30,
+        "format": "󰋊 {percentage_used}%",
+        "path": "/",
+        "states": {
+            "warning": 80,
+            "critical": 95
+        }
+    },
+    "pulseaudio": {
         "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}",
         "format-muted": "",
-        "on-click": "helvum",
-        "format-icons": ["", "", ""]
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", ""]
+        },
+        "scroll-step": 1,
+        "on-click": "pavucontrol",
+        "ignored-sinks": ["Easy Effects Sink"]
     },
-
     "custom/weather": {
         "format": "{}°",
         "tooltip": true,
         "interval": 3600,
-        "exec": "/home/warlboro/.scripts/waybar/wttrbar/wttrbar --ampm --fahrenheit --mph",
+        "exec": "wttrbar --ampm --fahrenheit --mph",
         "return-type": "json"
+    },
+    "custom/clipboard": {
+      "format": "📋",
+      "interval": 5,
+      "return-type": "json",
+      "exec": "printf '{\"tooltip\":\"%s items in history\", \"class\":\"%s\"}' \"$(cliphist list | wc -l)\" \"$(cliphist list | wc -l)\"",
+      "on-click": "~/.local/bin/clipmenu",
+      "signal": 9
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
