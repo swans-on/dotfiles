@@ -27,12 +27,11 @@
         }
     },
     "custom/os_button": {
-        "exec": "~/.config/waybar/scripts/wayfetch.sh",
+        "exec": "~/.local/bin/rf4wb --waybar",
         "return-type": "json",
         "interval": 3600,
         "format": "󰣇",
         "tooltip": true,
-        "tooltip-format": "<tt><small>{}</small></tt>"
     },
     "clock": {
         "format": "   {:%I:%M\n %m-%d-%Y}",
@@ -109,7 +108,7 @@
     "custom/weather": {
         "format": "{}°",
         "tooltip": true,
-        "interval": 3600,
+        "interval": 14400,
         "exec": "wttrbar --ampm --fahrenheit --mph",
         "return-type": "json"
     },
