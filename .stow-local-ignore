@@ -2,3 +2,12 @@
 \.stow-local-ignore
 # Ignore markdown documentation
 .*\.md
+# Ignore common developer and OS files
+\.git
+\.gitignore
+\.DS_Store
+# Ignore specific backup and temporary files
+.*\.swp
+.*\.bak
+# Ignore install scripts if any
+install\.sh
