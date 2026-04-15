@@ -1,0 +1,31 @@
+# --- Global Aesthetics ---
+background-color=#000000
+text-color=#ffffff
+border-size=2
+border-radius=3
+font=monospace 10
+
+# Default Border (Now using your Green)
+border-color=#32cd32
+
+# Progress bars (Now using your Orange)
+progress-color=over #ff8c00
+
+# --- Urgency Levels ---
+
+# Low Urgency (Muted Green)
+[urgency=low]
+border-color=#228b22
+default-timeout=2000
+
+# Normal Urgency (Primary Green)
+[urgency=normal]
+border-color=#32cd32
+default-timeout=5000
+
+# High/Critical Urgency (Orange Alert)
+[urgency=high]
+border-color=#ff8c00
+text-color=#ffffff
+default-timeout=0
+

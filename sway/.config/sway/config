@@ -29,7 +29,7 @@ exec mako
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /home/warlboro/Pictures/Wallpapers/space.jpg fill
+output * bg /home/warlboro/Pictures/Wallpapers/space/moon.jpg fill
 #
 # Example configuration:
 #
@@ -237,9 +237,13 @@ bindsym $mod+r mode "resize"
 # Requires cliphist
 # Currently running cliphist/wl-paste as a systemd user service.
 #bindsym $mod+Shift+v exec cliphist list | rofi -dmenu -p "Clipboard" | cliphist decode | wl-copy
-bindsym $mod+Shift+v exec ~/.local/bin/clipmenu
+#bindsym $mod+Shift+v exec ~/.local/bin/clipmenu
+exec clipse -listen
+for_window [app_id="clipse"] floating enable, move position center, resize set 80ppt 80ppt
+bindsym $mod+Shift+v exec alacritty --class clipse -e clipse
 
-#
+
+
 # Power management
 # Requires my fork of rofi-power-menu for sway
 #
